@@ -1,0 +1,36 @@
+
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ application.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Manage App
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <!--<li><a style="cursor: pointer" (click)="onAddToShoppingList() " style="cursor: pointer;">Añadir a cesta</a></li>-->
+        <!--<li><a style="cursor: pointer" (click)="onEditRecipe()">Editar Receta</a></li>-->
+        <!--<li><a style="cursor: pointer" (click)="onDeleteteRecipe()">Eliminar Receta</a></li>-->
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ application.path }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let flow of application.flows">
+        {{flow.name}} - {{flow.description}}
+      </li>
+    </ul>
+  </div>
+</div>
