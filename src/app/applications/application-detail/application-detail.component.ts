@@ -11,20 +11,28 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 export class ApplicationDetailComponent implements OnInit {
   application: Application;
   id: number;
+  constructor(private applicationService: ApplicationService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
-  constructor(
-    private applicationService: ApplicationService,
-    private route: ActivatedRoute,
-    private router: Router
-    ) { }
 
   ngOnInit() {
     this.route.params
       .subscribe(
         (params: Params ) => {
           this.id = +params['id'];
+          this.application = this.applicationService.getApp(this.id);
         }
-      )
+      );
+  }
+
+  onEditApplication() {
+    this.router.navigate(['edit'], { relativeTo: this.route});
+  }
+
+  onDeleteApplication() {
+    this.applicationService.deleteApp(this.id);
+    this.router.navigate(['/recipes']);
   }
 
 }

@@ -1,7 +1,69 @@
-
 <div class="row">
   <div class="col-xs-12">
     <h1>{{ application.name }}</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <b>Ubicacion:</b> {{ application.path }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Flujos:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr   *ngFor="let flow of application.flows; let i = index">
+          <th>
+          {{i+1}}
+          </th>
+          <th>
+            <table>
+              <tr>
+                <th>Nombre: </th>
+                <th>{{flow.name}}</th>
+              </tr>
+              <tr>
+                <th>Entrada:</th>
+                <th>{{flow.input}}</th>
+              </tr>
+              <tr>
+                <th>Tópico de Entrada: </th>
+                <th>{{flow.inputTopic}}</th>
+              </tr>
+              <tr>
+                <th>Salida: </th>
+                <th>{{flow.output}}</th>
+              </tr>
+              <tr>
+                <th>Topico de Salida: </th>
+                <th>{{flow.outputTopic}}</th>
+              </tr>
+              <tr>
+                <th>Trazas: </th>
+                <th>{{flow.traces}}</th>
+              </tr>
+              <tr>
+                <th>Descripción: </th>
+                <th>{{flow.description}}</th>
+              </tr>
+            </table>
+          </th>
+        </tr>
+        </tbody>
+      </table>
+      <!--Entrada: {{flow.input}}-->
+      <!--Topico de entrada: {{flow.inputTopic}}-->
+      <!--Salida: {{flow.output}}-->
+      <!--Topico de Salida: {{flow.outputTopic}}-->
+      <!--Tiene trazas: {{flow.traces}}-->
+      <!--Descripción: {{flow.description}}-->
   </div>
 </div>
 <div class="row">
@@ -11,26 +73,15 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <!--<li><a style="cursor: pointer" (click)="onAddToShoppingList() " style="cursor: pointer;">Añadir a cesta</a></li>-->
-        <!--<li><a style="cursor: pointer" (click)="onEditRecipe()">Editar Receta</a></li>-->
-        <!--<li><a style="cursor: pointer" (click)="onDeleteteRecipe()">Eliminar Receta</a></li>-->
+        <li><a style="cursor: pointer" (click)="onEditApplication()">Editar App</a></li>
+        <li><a style="cursor: pointer" (click)="onDeleteApplication()">Eliminar App</a></li>
       </ul>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-xs-12">
-    {{ application.path }}
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        *ngFor="let flow of application.flows">
-        {{flow.name}} - {{flow.description}}
-      </li>
-    </ul>
-  </div>
-</div>
+<!--public input: string,-->
+<!--public inputTopic: string,-->
+<!--public output: string,-->
+<!--public outputTopic,-->
+<!--public traces: boolean,-->
+<!--public description: string-->

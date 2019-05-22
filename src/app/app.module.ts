@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { DataListComponent } from './data-list/data-list.component';
-import { DataEditComponent } from './data-edit/data-edit.component';
 import {AppRoutingModule} from "./app-routing.module";
-import { ApplicationItemComponent } from './applications/application-item/application-item.component';
 import {ApplicationService} from "./applications/application.service";
-import { ApplicationDetailComponent } from './applications/application-detail/application-detail.component';
-import { ApplicationsComponent } from './applications/applications.component';
+import {ApplicationsRoutingModule} from "./applications/applications-routing.module";
+import {AuthModule} from "./auth/auth.module";
+import {ApplicationsModule} from "./applications/applications.module";
+import {AuthService} from "./auth/auth.service";
+import {AuthGuard} from "./auth/auth-guard.service";
+import {DataStorageService} from "./shared/data-storage.service";
+import {HttpModule} from "@angular/http";
 
 
 @NgModule({
@@ -20,18 +22,22 @@ import { ApplicationsComponent } from './applications/applications.component';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    SidebarComponent,
-    DataListComponent,
-    DataEditComponent,
-    ApplicationItemComponent,
-    ApplicationDetailComponent,
-    ApplicationsComponent
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ApplicationsRoutingModule,
+    AuthModule,
+    ApplicationsModule,
+    HttpModule
   ],
-  providers: [ApplicationService],
+  providers: [
+    ApplicationService,
+    AuthService,
+    AuthGuard,
+    DataStorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

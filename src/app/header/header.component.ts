@@ -1,15 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "../auth/auth.service";
+import {DataStorageService} from "../shared/data-storage.service";
+import {Response} from '@angular/http';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  constructor(public authService: AuthService, public dataStorageService: DataStorageService) {
+  }
 
-  ngOnInit() {
+  onSaveData() {
+    console.log('saving');
+    this.dataStorageService.storeApplications()
+      .subscribe(
+        (response: Response) => {
+          console.log(response);
+        }
+      );
+  }
+
+  onFetchData() {
+    console.log('fetching');
+    this.dataStorageService.getApplications();
+  }
+
+  onLogout() {
+    this.authService.logout();
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
   }
 
 }

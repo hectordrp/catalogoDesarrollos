@@ -44,4 +44,28 @@ export class ApplicationService {
     return this.applications.slice();
   };
 
+  getApp(index: number) {
+    return this.applications[index];
+  }
+
+  setApps(recipes: Application[]) {
+    this.applications = recipes;
+    this.appsChanged.next(this.applications.slice());
+  }
+
+  updateApp(index: number, newApp: Application) {
+    this.applications[index] = newApp;
+    this.appsChanged.next(this.applications.slice());
+
+  }
+
+  addApp(application: Application) {
+    this.applications.push(application);
+    this.appsChanged.next(this.applications.slice());
+  }
+
+  deleteApp(index: number) {
+    this.applications.splice(index, 1);
+    this.appsChanged.next(this.applications.slice());
+  }
 }
